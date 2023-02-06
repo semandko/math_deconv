@@ -1,0 +1,671 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0052)http://mathworld.wolfram.com/CauchyDistribution.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Cauchy Distribution -- from Wolfram MathWorld</TITLE>
+<META http-equiv=content-type content="text/html; charset=iso-8859-1">
+<META content="Weisstein, Eric W." name=DC.Creator>
+<META 
+content="The Cauchy distribution, also called the Lorentzian distribution or Lorentz distribution, is a continuous distribution describing resonance behavior. It also describes the distribution of horizontal distances at which a line segment tilted at a random angle cuts the x-axis. Let theta represent the angle that a line, with fixed point of rotation, makes with the vertical axis, as shown above. Then tantheta = x/b (1)  theta = tan^(-1)(x/b) (2)  dtheta = 1/(1+(x^2)/(b^2))(dx)/b (3)   =..." 
+name=DC.Description>
+<META scheme=W3CDTF content=2005-10-11 name=DC.Date.Modified>
+<META scheme=MathWorld 
+content="Mathematics:Probability and Statistics:Statistical Distributions:Continuous Distributions" 
+name=DC.Subject>
+<META scheme=MathWorld 
+content="Mathematics:History and Terminology:Mathematica Commands" 
+name=DC.Subject>
+<META scheme=MSC_2000 content=60E name=DC.Subject>
+<META scheme=MSC_2000 content=62E name=DC.Subject>
+<META 
+content="Copyright 1999-2010 Wolfram Research, Inc.  See http://mathworld.wolfram.com/about/terms.html for a full terms of use statement." 
+name=DC.Rights>
+<META scheme=IMT content=text/html name=DC.Format>
+<META scheme=URI content=http://mathworld.wolfram.com/CauchyDistribution.html 
+name=DC.Identifier>
+<META scheme=RFC3066 content=en name=DC.Language>
+<META content="Wolfram Research, Inc." name=DC.Publisher>
+<META scheme=URI content=http://mathworld.wolfram.com/ 
+name=DC.Relation.IsPartOf>
+<META scheme=DCMIType content=Text name=DC.Type>
+<META content=2005-10-11 name=Last-Modified><LINK 
+title="MathWorld Headline News" href="/news/rss.xml" type=application/rss+xml 
+rel=alternate><LINK 
+href="Cauchy Distribution -- from Wolfram MathWorld.files/mathworld.css" 
+type=text/css rel=stylesheet><LINK href="/favicon_mathworld.png" type=image/png 
+rel="shortcut icon">
+<SCRIPT language=JavaScript 
+src="Cauchy Distribution -- from Wolfram MathWorld.files/menu.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Cauchy Distribution -- from Wolfram MathWorld.files/mathworld.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Cauchy Distribution -- from Wolfram MathWorld.files/downloadNotebook.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR><!-- IE Mac will fail on url('') -->
+    <TD 
+    style="BACKGROUND-IMAGE: url(/images/topbar/header.gif); BACKGROUND-REPEAT: no-repeat">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><IMG height=80 alt="" 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/spacer.gif" 
+            width=615 useMap=#TopMap border=0></TD>
+          <TD width=300><IMG alt="" 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/spacer.gif" 
+            width=50> 
+            <DIV class=formwrapper>
+            <FORM name=NavBarSearch accept-charset=UTF-8 
+            onsubmit=" if (checkForDefaultInput('query_1', 'SEARCH MATHWORLD')) { return false; }" 
+            action=http://mathworld.wolfram.com/search/ method=get>
+            <TABLE cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR><!--
+<td valign="middle" nowrap="nowrap"><a href="/search/" style="font-size:10px;">
+Search Site</a>
+</td>
+-->
+                <TD>
+                  <TABLE class=searchboxborder cellSpacing=0 cellPadding=0 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><INPUT class=searchboxsub id=query_1 
+                        onblur="initTextInput(this,'setDefault','SEARCH MATHWORLD')" 
+                        onfocus="initTextInput(this,'clear','SEARCH MATHWORLD')" 
+                        value="SEARCH MATHWORLD" name=query></TD><!--
+  <td><input type="image" src="/common/images/search/searchbox_arrows.gif" class="searchbox" alt="Search" onclick="if (checkForDefaultInput('query_1', 'SEARCH MATHWORLD')) { return false;} else {document.NavBarSearch.submit(); }" /></td>
+--></TR></TBODY></TABLE></TD>
+                <TD vAlign=center><INPUT type=image 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/go.gif"></TD></TR></TBODY></TABLE></FORM></DIV></TD></TR></TBODY></TABLE>
+      <DIV style="PADDING-RIGHT: 840px"></DIV></TD>
+    <TD width="100%"><IMG height=79 alt="" 
+      src="Cauchy Distribution -- from Wolfram MathWorld.files/header-extend.gif" 
+      width="100%"></TD></TR></TBODY></TABLE><MAP id=TopMap name=TopMap><AREA 
+  shape=RECT target=_blank alt="made with Mathematica technology" 
+  coords=11,34,198,51 href="http://www.wolfram.com/products/mathematica/"><AREA 
+  shape=RECT alt=MathWorld coords=8,8,197,30 
+  href="http://mathworld.wolfram.com/"></MAP>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD><!-- Sidebar -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top noWrap align=left width=185>
+            <TABLE cellSpacing=0 cellPadding=0 width=175 border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <DIV class=leftsidebar>
+                  <DIV class=mainindices><A 
+                  href="http://mathworld.wolfram.com/topics/Algebra.html">Algebra</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/AppliedMathematics.html">Applied 
+                  Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/CalculusandAnalysis.html">Calculus 
+                  and Analysis</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/DiscreteMathematics.html">Discrete 
+                  Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/FoundationsofMathematics.html">Foundations 
+                  of Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/Geometry.html">Geometry</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/HistoryandTerminology.html">History 
+                  and Terminology</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/NumberTheory.html">Number 
+                  Theory</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/ProbabilityandStatistics.html">Probability 
+                  and Statistics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/RecreationalMathematics.html">Recreational 
+                  Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/Topology.html">Topology</A><BR></DIV></DIV></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=10></TD></TR>
+        <TR>
+          <TD vAlign=top noWrap align=left width=185>
+            <TABLE cellSpacing=0 cellPadding=0 width=175 border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <DIV class=leftsidebar2>
+                  <DIV class=subindices><A 
+                  href="http://mathworld.wolfram.com/letters/">Alphabetical 
+                  Index</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/InteractiveEntries.html">Interactive 
+                  Entries</A><BR><A 
+                  href="http://mathworld.wolfram.com/cgi-bin/random.cgi">Random 
+                  Entry</A><BR><A 
+                  href="http://mathworld.wolfram.com/whatsnew/">New in 
+                  <I>MathWorld</I></A><BR></DIV>
+                  <DIV class=divider></DIV>
+                  <DIV class=subindices><A 
+                  href="http://mathworld.wolfram.com/classroom/"><I>MathWorld</I> 
+                  Classroom</A><BR></DIV>
+                  <DIV class=divider></DIV>
+                  <DIV class=subindices><A 
+                  href="http://mathworld.wolfram.com/about/">About 
+                  <I>MathWorld</I></A><BR><A 
+                  href="http://mathworld.wolfram.com/contact/contribute.html">Contribute 
+                  to <I>MathWorld</I></A><BR><A 
+                  href="http://mathworld.wolfram.com/contact/">Send a Message to 
+                  the Team</A><BR></DIV>
+                  <DIV class=divider></DIV>
+                  <DIV class=subindices><A 
+                  href="http://www.amazon.com/exec/obidos/ASIN/1584883472/ref=nosim/weisstein-20" 
+                  target=_blank><I>MathWorld</I> Book</A><BR></DIV></DIV>
+                  <DIV class=leftsidebarfooter>
+                  <DIV class=last-updated><A 
+                  href="http://mathworld.wolfram.com/whatsnew/">12,996 
+                  entries</A> </DIV>
+                  <DIV class=last-updated><A 
+                  href="http://mathworld.wolfram.com/whatsnew/">Last updated: 
+                  Mon Aug 30 2010</A><BR></DIV><BR><A 
+                  onmouseover="MM_swapImage('Image1','','/images/sidebar/created-over_01.gif',1)" 
+                  onmouseout=MM_swapImgRestore() 
+                  href="http://mathworld.wolfram.com/about/author.html"><IMG 
+                  id=Image1 
+                  title="Created, developed, and nurtured by Eric Weisstein" 
+                  height=32 
+                  alt="Created, developed, and nurtured by Eric Weisstein" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/created_01.gif" 
+                  width=120 border=0 name=Image1></A><BR><A 
+                  onmouseover="MM_swapImage('Image2','','/images/sidebar/created-over_02.gif',1)" 
+                  onmouseout=MM_swapImgRestore() href="http://www.wolfram.com/" 
+                  target=_blank><IMG id=Image2 title="at Wolfram Research" 
+                  height=17 alt="at Wolfram Research" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/created_02.gif" 
+                  width=120 border=0 name=Image2></A> 
+          </DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Sidebar --></TD>
+    <TD><IMG height=1 alt="" 
+      src="Cauchy Distribution -- from Wolfram MathWorld.files/spacer.gif" 
+      width=20></TD>
+    <TD>
+      <DIV class=leftshadow>
+      <DIV class=centertable>
+      <TABLE width="100%"><!-- Begin Body -->
+        <TBODY>
+        <TR>
+          <TD><IMG height=1 alt="" 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/spacer.gif" 
+            width=400></TD></TR>
+        <TR>
+          <TD vAlign=top align=left width="100%"><!-- Begin Subject -->
+            <DIV class=subjectnavbar><A 
+            href="http://mathworld.wolfram.com/topics/ProbabilityandStatistics.html">Probability 
+            and Statistics</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/StatisticalDistributions.html">Statistical 
+            Distributions</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/ContinuousDistributions.html">Continuous 
+            Distributions</A>&nbsp;&gt;<BR></DIV>
+            <DIV class=subjectnavbar><A 
+            href="http://mathworld.wolfram.com/topics/HistoryandTerminology.html">History 
+            and Terminology</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/MathematicaCommands.html"><I>Mathematica</I> 
+            Commands</A>&nbsp;&gt;<BR></DIV><!-- End Subject --><BR><!-- Begin Title -->
+            <TABLE cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD class=title vAlign=baseline><SPAN class=nowrap>Cauchy 
+                  Distribution</SPAN></TD></TR>
+              <TR>
+                <TD vAlign=top><SPAN class=nowrap><IMG height=3 alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/underline.gif" 
+                  width="100%"><IMG height=3 alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/underline.gif" 
+                  width=20></SPAN></TD>
+                <TD><IMG height=15 alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/spacer.gif"></TD></TR></TBODY></TABLE><!-- End Title --></TD></TR>
+        <TR vAlign=top>
+          <TD><!-- Begin Total Content --><A 
+            onclick="downloadNotebook('http://mathworld.wolfram.com/notebooks/Statistics/CauchyDistribution.nb');return false;" 
+            href="http://mathworld.wolfram.com/notebooks/Statistics/CauchyDistribution.nb"><IMG 
+            height=26 alt="DOWNLOAD Mathematica Notebook" 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/dnld-nb.gif" 
+            width=119 border=0></A> <!-- Begin Content -->
+            <DIV align=center><IMG height=154 alt=CauchyDistributionFigure 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/CauchyDistributionFigure_1000.gif" 
+            width=143> </DIV>
+            <P class=Text>The Cauchy distribution, also called the Lorentzian 
+            distribution or Lorentz distribution, is a continuous distribution 
+            describing resonance behavior. It also describes the distribution of 
+            horizontal distances at which a <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/LineSegment.html">line 
+            segment</A> tilted at a random <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/Angle.html">angle</A> cuts the <A 
+            class=Hyperlink 
+            href="http://mathworld.wolfram.com/x-Axis.html"><I>x</I>-axis</A>. 
+            </P>
+            <P class=Text>Let <IMG class=inlineformula height=14 alt=theta 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline1.gif" 
+            width=6 border=0> represent the <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/Angle.html">angle</A> that a 
+            line, with fixed point of rotation, makes with the vertical axis, as 
+            shown above. Then </P>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center border=0>
+              <TBODY>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt=tantheta 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline2.gif" 
+                  width=26 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline3.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=33 alt=x/b 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline4.gif" 
+                  width=12 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn1>(1) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt=theta 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline5.gif" 
+                  width=6 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline6.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=33 
+                  alt=tan^(-1)(x/b) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline7.gif" 
+                  width=54 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn2>(2) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt=dtheta 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline8.gif" 
+                  width=16 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline9.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=49 
+                  alt=1/(1+(x^2)/(b^2))(dx)/b 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline10.gif" 
+                  width=66 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn3>(3) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline11.gif" 
+                  width=12 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline12.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=38 
+                  alt=(bdx)/(b^2+x^2), 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline13.gif" 
+                  width=50 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn4>(4) </DIV></TD></TR></TBODY></TABLE>
+            <P class=Text>so the distribution of <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/Angle.html">angle</A> <IMG 
+            class=inlineformula height=14 alt=theta 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline14.gif" 
+            width=6 border=0> is given by </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=38 
+                  alt=" (dtheta)/pi=1/pi(bdx)/(b^2+x^2). " 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/NumberedEquation1.gif" 
+                  width=101 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn5>(5) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>This is normalized over all angles, since </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=37 
+                  alt=" int_(-pi/2)^(pi/2)(dtheta)/pi=1 " 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/NumberedEquation2.gif" 
+                  width=73 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn6>(6) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>and </P>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center border=0>
+              <TBODY>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=38 
+                  alt=int_(-infty)^infty1/pi(bdx)/(b^2+x^2) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline15.gif" 
+                  width=83 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline16.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=37 
+                  alt=1/pi[tan^(-1)(x/b)]_(-infty)^infty 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline17.gif" 
+                  width=93 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn7>(7) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline18.gif" 
+                  width=12 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline19.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=36 
+                  alt=1/pi[1/2pi-(-1/2pi)] 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline20.gif" 
+                  width=96 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn8>(8) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline21.gif" 
+                  width=12 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline22.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=14 alt=1. 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline23.gif" 
+                  width=11 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn9>(9) </DIV></TD></TR></TBODY></TABLE>
+            <DIV align=center><IMG height=149 alt=CauchyDistribution 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/CauchyDistribution_800.gif" 
+            width=506> </DIV>
+            <P class=Text>The general Cauchy distribution and its cumulative 
+            distribution can be written as </P>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center border=0>
+              <TBODY>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt=P(x) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline24.gif" 
+                  width=27 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline25.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=40 
+                  alt=1/pib/((x-m)^2+b^2) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline26.gif" 
+                  width=93 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn10>(10) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt=D(x) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline27.gif" 
+                  width=28 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline28.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=36 
+                  alt=1/2+1/pitan^(-1)((x-m)/b), 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline29.gif" 
+                  width=123 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn11>(11) </DIV></TD></TR></TBODY></TABLE>
+            <P class=Text>where <IMG class=inlineformula height=14 alt=b 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline30.gif" 
+            width=7 border=0> is the half width at half maximum and <IMG 
+            class=inlineformula height=14 alt=m 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline31.gif" 
+            width=10 border=0> is the <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/StatisticalMedian.html">statistical 
+            median</A>. In the illustration about, <IMG class=inlineformula 
+            height=14 alt=m=0 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline32.gif" 
+            width=34 border=0>. </P>
+            <P class=Text>The Cauchy distribution is implemented in <I><A 
+            class=Hyperlink 
+            href="http://www.wolfram.com/products/mathematica/"><I>Mathematica</I></A></I> 
+            as <TT><A class=Hyperlink 
+            href="http://reference.wolfram.com/mathematica/ref/CauchyDistribution.html">CauchyDistribution</A></TT>[<I>m</I>, 
+            <I>Gamma</I>/2]. </P>
+            <P class=Text>The <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/CharacteristicFunction.html">characteristic 
+            function</A> is </P>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center border=0>
+              <TBODY>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt=phi(t) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline33.gif" 
+                  width=23 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline34.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=54 
+                  alt=1/piint_(-infty)^inftye^(itx)(1/2Gamma)/((1/2Gamma)^2+(x-m)^2)dx 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline35.gif" 
+                  width=182 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn12>(12) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline36.gif" 
+                  width=12 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline37.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=17 
+                  alt=e^(imt-Gamma|t|/2). 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline38.gif" 
+                  width=57 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn13>(13) </DIV></TD></TR></TBODY></TABLE>
+            <P class=Text>The <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/Moment.html">moments</A> <IMG 
+            class=inlineformula height=16 alt=mu_n 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline39.gif" 
+            width=14 border=0> of the distribution are undefined since the 
+            integrals </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=48 
+                  alt=" mu_n=int_(-infty)^inftyGamma/(2pi)(x^n)/((x-m)^2+(1/2Gamma)^2)dx " 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/NumberedEquation3.gif" 
+                  width=198 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn14>(14) 
+</DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>diverge for <IMG class=inlineformula height=14 
+            alt="n>=1" 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline40.gif" 
+            width=29 border=0>. </P>
+            <P class=Text>If <IMG class=inlineformula height=14 alt=X 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline41.gif" 
+            width=10 border=0> and <IMG class=inlineformula height=14 alt=Y 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline42.gif" 
+            width=9 border=0> are variates with a <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/NormalDistribution.html">normal 
+            distribution</A>, then <IMG class=inlineformula height=14 alt=Z=X/Y 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline43.gif" 
+            width=51 border=0> has a Cauchy distribution with <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/StatisticalMedian.html">statistical 
+            median</A> <IMG class=inlineformula height=14 alt=m=0 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline44.gif" 
+            width=34 border=0> and full width </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=41 
+                  alt=" Gamma=(2sigma_x)/(sigma_y). " 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/NumberedEquation4.gif" 
+                  width=60 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn15>(15) 
+</DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>The sum of <IMG class=inlineformula height=14 alt=n 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline45.gif" 
+            width=7 border=0> variates each from a Cauchy distribution has 
+            itself a Cauchy distribution, as can be seen from </P>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center border=0>
+              <TBODY>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=16 
+                  alt=P_n(x) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline46.gif" 
+                  width=33 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline47.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=20 
+                  alt=F_t^(-1){[phi(t)]^n}(x) 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline48.gif" 
+                  width=94 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn16>(16) </DIV></TD></TR>
+              <TR>
+                <TD align=right width=1><IMG class=displayformula height=14 
+                  alt="" 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline49.gif" 
+                  width=12 border=0></TD>
+                <TD align=middle width=14><IMG class=displayformula height=14 
+                  alt== 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline50.gif" 
+                  width=9 border=0></TD>
+                <TD align=left><IMG class=displayformula height=54 
+                  alt=((1/2nGamma))/(pi[(1/2nGamma)^2+(x-nm)^2]), 
+                  src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline51.gif" 
+                  width=144 border=0></TD>
+                <TD align=right width=10>
+                  <DIV class=eqnum id=eqn17>(17) </DIV></TD></TR></TBODY></TABLE>
+            <P class=Text>where <IMG class=inlineformula height=14 alt=phi(t) 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline52.gif" 
+            width=23 border=0> is the <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/CharacteristicFunction.html">characteristic 
+            function</A> and <IMG class=inlineformula height=20 
+            alt=F_t^(-1)[f(t)](x) 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline53.gif" 
+            width=78 border=0> is the inverse <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/FourierTransform.html">Fourier 
+            transform</A>, taken with parameters <IMG class=inlineformula 
+            height=14 alt=a=b=1 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/Inline54.gif" 
+            width=55 border=0>. </P><!-- End Content --><!-- Begin See Also -->
+            <FORM name=SearchLinks action=http://mathworld.wolfram.com/search/ 
+            method=get>
+            <P class=CrossRefs><SPAN class=crosslinkheader>SEE ALSO:</SPAN> <A 
+            class=Hyperlink 
+            href="http://mathworld.wolfram.com/NormalDistribution.html">Normal 
+            Distribution</A> </P></FORM><!-- End See Also --><!-- Begin CrossURL --><!-- End CrossURL --><!-- Begin Contributor --><!-- End Contributor --><!-- Begin References -->
+            <P><IMG height=3 alt="" 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/underline.gif" 
+            width=300> </P><SPAN class=crosslinkheader>REFERENCES:</SPAN> 
+            <P class=Reference>Papoulis, A. <I><A class=Hyperlink 
+            href="http://www.amazon.com/exec/obidos/ASIN/0070484686/ref=nosim/weisstein-20">Probability, 
+            Random Variables, and Stochastic Processes, 2nd ed.</A></I> New 
+            York: McGraw-Hill, p.&nbsp;104, 1984. </P>
+            <P class=Reference>Spiegel, M.&nbsp;R. <I><A class=Hyperlink 
+            href="http://www.amazon.com/exec/obidos/ASIN/0070602816/ref=nosim/weisstein-20">Theory 
+            and Problems of Probability and Statistics.</A></I> New York: 
+            McGraw-Hill, pp.&nbsp;114-115, 1992. </P><!-- End References --><!-- Begin CiteAs -->
+            <DIV><IMG height=3 alt="" 
+            src="Cauchy Distribution -- from Wolfram MathWorld.files/underline.gif" 
+            width=300><BR><BR><BR><SPAN class=crosslinkheader>CITE THIS 
+            AS:</SPAN><BR>
+            <P class=citation><A 
+            href="http://mathworld.wolfram.com/about/author.html">Weisstein, 
+            Eric W.</A> "Cauchy Distribution." From <A 
+            href="http://mathworld.wolfram.com/"><I>MathWorld</I></A>--A Wolfram 
+            Web Resource. <A 
+            href="http://mathworld.wolfram.com/CauchyDistribution.html">http://mathworld.wolfram.com/CauchyDistribution.html</A> 
+            </P></DIV><!-- End CiteAs --><!-- End Total Content --></TD></TR><!-- End Body --></TBODY></TABLE></DIV></DIV>
+      <DIV class=bottomshadow><IMG height=17 alt="" 
+      src="Cauchy Distribution -- from Wolfram MathWorld.files/spacer.gif" 
+      width=1> </DIV>
+      <P class=footer><A href="http://mathworld.wolfram.com/contact/"><IMG 
+      title=Send height=17 alt=Send 
+      src="Cauchy Distribution -- from Wolfram MathWorld.files/send.gif" 
+      width=16 border=0>Contact the <I>MathWorld</I> Team</A><BR>© 1999-2010 <A 
+      href="http://www.wolfram.com/" target=_blank>Wolfram Research, Inc.</A> | 
+      <A href="http://mathworld.wolfram.com/about/terms.html">Terms of Use</A> 
+      </P></TD>
+    <TD vAlign=top>
+      <DIV style="MARGIN-LEFT: 20px; MARGIN-RIGHT: 10px">
+      <DIV class=ad><MAP id=demomap name=demomap><AREA 
+        title="The Wolfram Demonstrations Project" shape=RECT target=_blank 
+        alt="The Wolfram Demonstrations Project" coords=0,0,213,300 
+        href="http://demonstrations.wolfram.com/"></AREA><AREA 
+        title="Browse Topics" shape=RECT target=_blank alt="Browse Topics" 
+        coords=0,300,106,345 
+        href="http://demonstrations.wolfram.com/topics.html"></AREA><AREA 
+        title="View Latest" shape=RECT target=_blank alt="View Latest" 
+        coords=107,300,213,345 
+        href="http://demonstrations.wolfram.com/new.html"></AREA></MAP><IMG 
+      height=345 alt="" 
+      src="Cauchy Distribution -- from Wolfram MathWorld.files/demonstrations1.jpg" 
+      width=213 useMap=#demomap border=0> </DIV></DIV>
+      <DIV style="MARGIN-TOP: 30px; MARGIN-LEFT: 16px; MARGIN-RIGHT: 10px"><A 
+      href="http://www.wolfram.com/products/mathematica/" target=_blank><IMG 
+      title="Wolfram Mathematica 7" height=79 alt="Wolfram Mathematica 7" 
+      src="Cauchy Distribution -- from Wolfram MathWorld.files/mathematica_bar.gif" 
+      width=224 border=0 ?></A> </DIV><!-- The code below handles :hover and :active for IE6 and below --><!--[if lte IE 6]>
+      <STYLE type=text/css>DIV.redwebmenu {
+	BEHAVIOR: url(/scripts/csshover.htc)
+}
+</STYLE>
+<![endif]-->
+      <DIV 
+      style="MARGIN-TOP: 20px; MARGIN-LEFT: 27px; MARGIN-RIGHT: 30px; POSITION: absolute">
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV class=redwebmenu>
+            <DIV class=redwebmenuheader><A class=aredmenuheader 
+            href="http://www.wolfram.com/webresources.html">&nbsp;Other Wolfram 
+            Web Resources »</A> 
+            <DIV class=redwebsubmenu>
+            <DIV class=redwebitem><A href="http://www.wolfram.com/" 
+            target=_blank>Wolfram Research</A></DIV>
+            <DIV class=redwebitem><A 
+            href="http://www.wolfram.com/products/mathematica/" 
+            target=_blank><I>Mathematica</I> Home Page</A></DIV>
+            <DIV class=redwebitem><A href="http://reference.wolfram.com/" 
+            target=_blank><I>Mathematica</I> Documentation Center</A></DIV>
+            <DIV class=redwebitem><A href="http://demonstrations.wolfram.com/" 
+            target=_blank>Wolfram Demonstrations Project</A></DIV>
+            <DIV class=redwebitem><A href="http://integrals.wolfram.com/" 
+            target=_blank>Online Integrator</A></DIV>
+            <DIV class=redwebitem><A href="http://functions.wolfram.com/" 
+            target=_blank>Functions Site</A></DIV>
+            <DIV class=redwebitem><A href="http://tones.wolfram.com/" 
+            target=_blank>Wolfram Tones</A></DIV>
+            <DIV class=redwebitem><A href="http://www.wolframscience.com/" 
+            target=_blank>Wolfram Science</A></DIV>
+            <DIV class=redwebitem><A href="http://blog.wolfram.com/" 
+            target=_blank>Wolfram Blog</A></DIV>
+            <DIV class=redwebitem><A 
+            href="http://www.wolfram.com/webresources.html" 
+            target=_blank>more…</A></DIV></DIV></DIV></DIV></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></BODY></HTML>

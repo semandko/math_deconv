@@ -1,0 +1,622 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0052)http://mathworld.wolfram.com/LorentzianFunction.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Lorentzian Function -- from Wolfram MathWorld</TITLE>
+<META http-equiv=content-type content="text/html; charset=iso-8859-1">
+<META content="Weisstein, Eric W." name=DC.Creator>
+<META 
+content="The Lorentzian function is the singly peaked function given by  L(x)=1/pi(1/2Gamma)/((x-x_0)^2+(1/2Gamma)^2),  (1)   where x_0 is the center and Gamma is a parameter specifying the width. The Lorentzian function is normalized so that  int_(-infty)^inftyL(x)=1.  (2)   It has a maximum at x=x_0, where  L^'(x)=-(16(x-x_0)Gamma)/(pi[4(x-x_0)^2+Gamma^2]^2)=0.  (3)   Its value at the maximum is  L(x_0)=2/(piGamma).  (4)   It is equal to half its maximum at  x=(x_0+/-1/2Gamma),  (5)   and so has..." 
+name=DC.Description>
+<META scheme=W3CDTF content=2002-12-06 name=DC.Date.Modified>
+<META scheme=W3CDTF content=2004-10-05 name=DC.Date.Modified>
+<META scheme=MathWorld 
+content="Mathematics:Calculus and Analysis:Special Functions:Miscellaneous Special Functions" 
+name=DC.Subject>
+<META scheme=MathWorld 
+content="Mathematics:Calculus and Analysis:Integral Transforms:Apodization Functions" 
+name=DC.Subject>
+<META scheme=MathWorld 
+content="Mathematics:Interactive Entries:webMathematica Examples" 
+name=DC.Subject>
+<META scheme=MSC_2000 content=33E99 name=DC.Subject>
+<META scheme=MSC_2000 content=44 name=DC.Subject>
+<META 
+content="Copyright 1999-2010 Wolfram Research, Inc.  See http://mathworld.wolfram.com/about/terms.html for a full terms of use statement." 
+name=DC.Rights>
+<META scheme=IMT content=text/html name=DC.Format>
+<META scheme=URI content=http://mathworld.wolfram.com/LorentzianFunction.html 
+name=DC.Identifier>
+<META scheme=RFC3066 content=en name=DC.Language>
+<META content="Wolfram Research, Inc." name=DC.Publisher>
+<META scheme=URI content=http://mathworld.wolfram.com/ 
+name=DC.Relation.IsPartOf>
+<META scheme=DCMIType content=Text name=DC.Type>
+<META content=2004-10-05 name=Last-Modified><LINK 
+title="MathWorld Headline News" href="/news/rss.xml" type=application/rss+xml 
+rel=alternate><LINK 
+href="Lorentzian Function -- from Wolfram MathWorld.files/mathworld.css" 
+type=text/css rel=stylesheet><LINK href="/favicon_mathworld.png" type=image/png 
+rel="shortcut icon">
+<SCRIPT language=JavaScript 
+src="Lorentzian Function -- from Wolfram MathWorld.files/menu.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Lorentzian Function -- from Wolfram MathWorld.files/mathworld.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Lorentzian Function -- from Wolfram MathWorld.files/downloadNotebook.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Lorentzian Function -- from Wolfram MathWorld.files/interactivewebM.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR><!-- IE Mac will fail on url('') -->
+    <TD 
+    style="BACKGROUND-IMAGE: url(/images/topbar/header.gif); BACKGROUND-REPEAT: no-repeat">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><IMG height=80 alt="" 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+            width=615 useMap=#TopMap border=0></TD>
+          <TD width=300><IMG alt="" 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+            width=50> 
+            <DIV class=formwrapper>
+            <FORM name=NavBarSearch accept-charset=UTF-8 
+            onsubmit=" if (checkForDefaultInput('query_1', 'SEARCH MATHWORLD')) { return false; }" 
+            action=http://mathworld.wolfram.com/search/ method=get>
+            <TABLE cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR><!--
+<td valign="middle" nowrap="nowrap"><a href="/search/" style="font-size:10px;">
+Search Site</a>
+</td>
+-->
+                <TD>
+                  <TABLE class=searchboxborder cellSpacing=0 cellPadding=0 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><INPUT class=searchboxsub id=query_1 
+                        onblur="initTextInput(this,'setDefault','SEARCH MATHWORLD')" 
+                        onfocus="initTextInput(this,'clear','SEARCH MATHWORLD')" 
+                        value="SEARCH MATHWORLD" name=query></TD><!--
+  <td><input type="image" src="/common/images/search/searchbox_arrows.gif" class="searchbox" alt="Search" onclick="if (checkForDefaultInput('query_1', 'SEARCH MATHWORLD')) { return false;} else {document.NavBarSearch.submit(); }" /></td>
+--></TR></TBODY></TABLE></TD>
+                <TD vAlign=center><INPUT type=image 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/go.gif"></TD></TR></TBODY></TABLE></FORM></DIV></TD></TR></TBODY></TABLE>
+      <DIV style="PADDING-RIGHT: 840px"></DIV></TD>
+    <TD width="100%"><IMG height=79 alt="" 
+      src="Lorentzian Function -- from Wolfram MathWorld.files/header-extend.gif" 
+      width="100%"></TD></TR></TBODY></TABLE><MAP id=TopMap name=TopMap><AREA 
+  shape=RECT target=_blank alt="made with Mathematica technology" 
+  coords=11,34,198,51 href="http://www.wolfram.com/products/mathematica/"><AREA 
+  shape=RECT alt=MathWorld coords=8,8,197,30 
+  href="http://mathworld.wolfram.com/"></MAP>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD><!-- Sidebar -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top noWrap align=left width=185>
+            <TABLE cellSpacing=0 cellPadding=0 width=175 border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <DIV class=leftsidebar>
+                  <DIV class=mainindices><A 
+                  href="http://mathworld.wolfram.com/topics/Algebra.html">Algebra</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/AppliedMathematics.html">Applied 
+                  Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/CalculusandAnalysis.html">Calculus 
+                  and Analysis</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/DiscreteMathematics.html">Discrete 
+                  Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/FoundationsofMathematics.html">Foundations 
+                  of Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/Geometry.html">Geometry</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/HistoryandTerminology.html">History 
+                  and Terminology</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/NumberTheory.html">Number 
+                  Theory</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/ProbabilityandStatistics.html">Probability 
+                  and Statistics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/RecreationalMathematics.html">Recreational 
+                  Mathematics</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/Topology.html">Topology</A><BR></DIV></DIV></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=10></TD></TR>
+        <TR>
+          <TD vAlign=top noWrap align=left width=185>
+            <TABLE cellSpacing=0 cellPadding=0 width=175 border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <DIV class=leftsidebar2>
+                  <DIV class=subindices><A 
+                  href="http://mathworld.wolfram.com/letters/">Alphabetical 
+                  Index</A><BR><A 
+                  href="http://mathworld.wolfram.com/topics/InteractiveEntries.html">Interactive 
+                  Entries</A><BR><A 
+                  href="http://mathworld.wolfram.com/cgi-bin/random.cgi">Random 
+                  Entry</A><BR><A 
+                  href="http://mathworld.wolfram.com/whatsnew/">New in 
+                  <I>MathWorld</I></A><BR></DIV>
+                  <DIV class=divider></DIV>
+                  <DIV class=subindices><A 
+                  href="http://mathworld.wolfram.com/classroom/"><I>MathWorld</I> 
+                  Classroom</A><BR></DIV>
+                  <DIV class=divider></DIV>
+                  <DIV class=subindices><A 
+                  href="http://mathworld.wolfram.com/about/">About 
+                  <I>MathWorld</I></A><BR><A 
+                  href="http://mathworld.wolfram.com/contact/contribute.html">Contribute 
+                  to <I>MathWorld</I></A><BR><A 
+                  href="http://mathworld.wolfram.com/contact/">Send a Message to 
+                  the Team</A><BR></DIV>
+                  <DIV class=divider></DIV>
+                  <DIV class=subindices><A 
+                  href="http://www.amazon.com/exec/obidos/ASIN/1584883472/ref=nosim/weisstein-20" 
+                  target=_blank><I>MathWorld</I> Book</A><BR></DIV></DIV>
+                  <DIV class=leftsidebarfooter>
+                  <DIV class=last-updated><A 
+                  href="http://mathworld.wolfram.com/whatsnew/">12,996 
+                  entries</A> </DIV>
+                  <DIV class=last-updated><A 
+                  href="http://mathworld.wolfram.com/whatsnew/">Last updated: 
+                  Mon Aug 30 2010</A><BR></DIV><BR><A 
+                  onmouseover="MM_swapImage('Image1','','/images/sidebar/created-over_01.gif',1)" 
+                  onmouseout=MM_swapImgRestore() 
+                  href="http://mathworld.wolfram.com/about/author.html"><IMG 
+                  id=Image1 
+                  title="Created, developed, and nurtured by Eric Weisstein" 
+                  height=32 
+                  alt="Created, developed, and nurtured by Eric Weisstein" 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/created_01.gif" 
+                  width=120 border=0 name=Image1></A><BR><A 
+                  onmouseover="MM_swapImage('Image2','','/images/sidebar/created-over_02.gif',1)" 
+                  onmouseout=MM_swapImgRestore() href="http://www.wolfram.com/" 
+                  target=_blank><IMG id=Image2 title="at Wolfram Research" 
+                  height=17 alt="at Wolfram Research" 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/created_02.gif" 
+                  width=120 border=0 name=Image2></A> 
+          </DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Sidebar --></TD>
+    <TD><IMG height=1 alt="" 
+      src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+      width=20></TD>
+    <TD>
+      <DIV class=leftshadow>
+      <DIV class=centertable>
+      <TABLE width="100%"><!-- Begin Body -->
+        <TBODY>
+        <TR>
+          <TD><IMG height=1 alt="" 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+            width=400></TD></TR>
+        <TR>
+          <TD vAlign=top align=left width="100%"><!-- Begin Subject -->
+            <DIV class=subjectnavbar><A 
+            href="http://mathworld.wolfram.com/topics/CalculusandAnalysis.html">Calculus 
+            and Analysis</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/SpecialFunctions.html">Special 
+            Functions</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/MiscellaneousSpecialFunctions.html">Miscellaneous 
+            Special Functions</A>&nbsp;&gt;<BR></DIV>
+            <DIV class=subjectnavbar><A 
+            href="http://mathworld.wolfram.com/topics/CalculusandAnalysis.html">Calculus 
+            and Analysis</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/IntegralTransforms.html">Integral 
+            Transforms</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/ApodizationFunctions.html">Apodization 
+            Functions</A>&nbsp;&gt;<BR></DIV>
+            <DIV class=subjectnavbar><A 
+            href="http://mathworld.wolfram.com/topics/InteractiveEntries.html">Interactive 
+            Entries</A>&nbsp;&gt;&nbsp;<A 
+            href="http://mathworld.wolfram.com/topics/webMathematicaExamples.html"><SPAN>web<I>Mathematica</I></SPAN> 
+            Examples</A>&nbsp;&gt;<BR></DIV><!-- End Subject --><BR><!-- Begin Title -->
+            <TABLE cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD class=title vAlign=baseline><SPAN class=nowrap>Lorentzian 
+                  Function</SPAN></TD></TR>
+              <TR>
+                <TD vAlign=top><SPAN class=nowrap><IMG height=3 alt="" 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/underline.gif" 
+                  width="100%"><IMG height=3 alt="" 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/underline.gif" 
+                  width=20></SPAN></TD>
+                <TD><IMG height=15 alt="" 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif"></TD></TR></TBODY></TABLE><!-- End Title --></TD></TR>
+        <TR vAlign=top>
+          <TD><!-- Begin Total Content --><A 
+            onclick="downloadNotebook('http://mathworld.wolfram.com/notebooks/SpecialFunctions/LorentzianFunction.nb');return false;" 
+            href="http://mathworld.wolfram.com/notebooks/SpecialFunctions/LorentzianFunction.nb"><IMG 
+            height=26 alt="DOWNLOAD Mathematica Notebook" 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/dnld-nb.gif" 
+            width=119 border=0></A> <!-- Begin Content -->
+            <TABLE title="" width="100%" align=center summary="">
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG id=LorentzianReal alt=LorentzianReal 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/LorentzianReal.gif" 
+                  name=LorentzianReal></TD></TR>
+              <TR>
+                <TD align=middle>
+                  <FORM id=LorentzianRealoptions name=LorentzianRealoptions 
+                  action=# method=post>
+                  <TABLE title="" cellSpacing=0 cellPadding=0 width=450 
+                  bgColor=#f9ffed summary="" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=#9bcdb9></TD></TR>
+                    <TR>
+                      <TD bgColor=#9bcdb9 height=1><IMG height=1 alt="" 
+                        src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                        width=1></TD></TR>
+                    <TR>
+                      <TD bgColor=#edf6b8 height=1><IMG height=1 alt="" 
+                        src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                        width=1></TD></TR>
+                    <TR>
+                      <TD bgColor=#9bcdb9 height=1><IMG height=1 alt="" 
+                        src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                        width=1></TD></TR>
+                    <TR>
+                      <TD bgColor=#9bcdb9></TD></TR>
+                    <TR>
+                      <TD bgColor=#f8ffec>
+                        <TABLE title="" cellSpacing=0 cellPadding=2 summary="" 
+                        border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><IMG height=1 alt="" 
+                              src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                              width=4></TD>
+                            <TD></TD>
+                            <TD></TD>
+                            <TD></TD>
+                            <TD></TD>
+                            <TD></TD>
+                            <TD></TD>
+                            <TD></TD>
+                            <TD><IMG height=1 alt="" 
+                              src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                              width=4></TD></TR>
+                          <TR>
+                            <TD></TD>
+                            <TD>Min</TD>
+                            <TD><INPUT size=6 value=-6 name=xMin></TD>
+                            <TD>Max</TD>
+                            <TD><INPUT size=6 value=6 name=xMax></TD>
+                            <TD><INPUT onclick='document.images.LorentzianReal.src=showRealLinePlots("Lorentzian",document.forms.LorentzianRealoptions.xMin.value,document.forms.LorentzianRealoptions.xMax.value);return false;' type=button value=Replot name=plotbutton></TD>
+                            <TD></TD>
+                            <TD width=211>
+                              <TABLE cellSpacing=0 cellPadding=3 width=254 
+                              align=center summary="" border=0>
+                                <TBODY>
+                                <TR>
+                                <TD align=middle><A 
+                                href="http://www.wolfram.com/products/webmathematica/" 
+                                target=new><IMG height=28 
+                                alt="Powered by webMathematica" 
+                                src="Lorentzian Function -- from Wolfram MathWorld.files/webM-mw3.gif" 
+                                width=142 
+                            border=0></A></TD></TR></TBODY></TABLE></TD>
+                            <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE>
+            <P class=Text>The Lorentzian function is the singly peaked function 
+            given by </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=54 
+                  alt=" L(x)=1/pi(1/2Gamma)/((x-x_0)^2+(1/2Gamma)^2), " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation1.gif" 
+                  width=164 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn1>(1) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>where <IMG class=inlineformula height=16 alt=x_0 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/Inline1.gif" 
+            width=13 border=0> is the center and <IMG class=inlineformula 
+            height=14 alt=Gamma 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/Inline2.gif" 
+            width=8 border=0> is a parameter specifying the width. The 
+            Lorentzian function is normalized so that </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=35 
+                  alt=" int_(-infty)^inftyL(x)=1. " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation2.gif" 
+                  width=77 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn2>(2) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>It has a maximum at <IMG class=inlineformula height=16 
+            alt=x=x_0 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/Inline3.gif" 
+            width=37 border=0>, where </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=45 
+                  alt=" L^'(x)=-(16(x-x_0)Gamma)/(pi[4(x-x_0)^2+Gamma^2]^2)=0. " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation3.gif" 
+                  width=204 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn3>(3) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>Its value at the maximum is </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=36 
+                  alt=" L(x_0)=2/(piGamma). " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation4.gif" 
+                  width=74 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn4>(4) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>It is equal to half its maximum at </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=23 
+                  alt=" x=(x_0+/-1/2Gamma), " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation5.gif" 
+                  width=85 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn5>(5) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>and so has <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/FullWidthatHalfMaximum.html">full 
+            width at half maximum</A> <IMG class=inlineformula height=14 
+            alt=Gamma 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/Inline4.gif" 
+            width=8 border=0>. The function has inflection points at </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=48 
+                  alt=" L^('')(x)=16Gamma(12(x-x_0)^2-Gamma^2)/(pi[4(x-x_0)^2+Gamma^2]^3)=0, " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation6.gif" 
+                  width=226 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn6>(6) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>giving </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=25 
+                  alt=" x_1=x_0-1/6sqrt(3)Gamma, " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation7.gif" 
+                  width=109 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn7>(7) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <P class=Text>where </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=36 
+                  alt=" L(x_1)=3/(2piGamma). " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation8.gif" 
+                  width=84 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn8>(8) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <TABLE title="" width="100%" align=center summary="">
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG id=LorentzianReImAbs 
+                  alt=LorentzianReImAbs 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/LorentzianReImAbs.gif" 
+                  name=LorentzianReImAbs></TD></TR>
+              <TR>
+                <TD align=middle>
+                  <FORM id=LorentzianReImAbsoptions 
+                  name=LorentzianReImAbsoptions action=# method=post>
+                  <TABLE cellSpacing=0 cellPadding=0 width=450 bgColor=#f9ffed 
+                  summary="" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=#9bcdb9></TD></TR>
+                    <TR>
+                      <TD bgColor=#9bcdb9 height=1><IMG height=1 alt="" 
+                        src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                        width=1></TD></TR>
+                    <TR>
+                      <TD bgColor=#edf6b8 height=1><IMG height=1 alt="" 
+                        src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                        width=1></TD></TR>
+                    <TR>
+                      <TD bgColor=#9bcdb9 height=1><IMG height=1 alt="" 
+                        src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                        width=1></TD></TR>
+                    <TR>
+                      <TD bgColor=#9bcdb9></TD></TR>
+                    <TR>
+                      <TD bgColor=#f8ffec>
+                        <TABLE cellSpacing=0 cellPadding=2 align=center 
+                        summary="" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><IMG height=1 alt="" 
+                              src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                              width=4></TD>
+                            <TD></TD>
+                            <TD>Min</TD>
+                            <TD></TD>
+                            <TD>Max</TD>
+                            <TD></TD>
+                            <TD></TD>
+                            <TD><IMG height=1 alt="" 
+                              src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+                              width=4></TD></TR>
+                          <TR>
+                            <TD></TD>
+                            <TD>Re</TD>
+                            <TD><INPUT size=6 value=-5 name=ReMin></TD>
+                            <TD></TD>
+                            <TD><INPUT size=6 value=5 name=ReMax></TD>
+                            <TD></TD></TR>
+                          <TR>
+                            <TD></TD>
+                            <TD>Im</TD>
+                            <TD><INPUT size=6 value=-5 name=ImMin></TD>
+                            <TD></TD>
+                            <TD><INPUT size=6 value=5 name=ImMax></TD>
+                            <TD><INPUT onclick='document.images.LorentzianReImAbs.src=showComplexPlots("Lorentzian",document.forms.LorentzianReImAbsoptions.ReMin.value,document.forms.LorentzianReImAbsoptions.ReMax.value,document.forms.LorentzianReImAbsoptions.ImMin.value,document.forms.LorentzianReImAbsoptions.ImMax.value);return false;' type=button value=Replot name=plotbutton></TD>
+                            <TD align=middle><A 
+                              href="http://www.wolfram.com/products/webmathematica/" 
+                              target=new><IMG height=28 
+                              alt="Powered by webMathematica" 
+                              src="Lorentzian Function -- from Wolfram MathWorld.files/webM-mw3.gif" 
+                              width=142 border=0></A></TD>
+                            <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE>
+            <P class=Text>The Lorentzian function extended into the <A 
+            class=Hyperlink 
+            href="http://mathworld.wolfram.com/ComplexPlane.html">complex 
+            plane</A> is illustrated above. </P>
+            <P class=Text>The Lorentzian function gives the shape of certain 
+            types of spectral lines and is the distribution function in the <A 
+            class=Hyperlink 
+            href="http://mathworld.wolfram.com/CauchyDistribution.html">Cauchy 
+            distribution</A>. The Lorentzian function has <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/FourierTransform.html">Fourier 
+            transform</A> </P>
+            <DIV>
+            <TABLE style="PADDING-LEFT: 50px" cellSpacing=0 cellPadding=0 
+            width="100%" align=center>
+              <TBODY>
+              <TR>
+                <TD align=left><IMG class=numberedequation height=53 
+                  alt=" F_x[1/pi(1/2Gamma)/((x-x_0)^2+(1/2Gamma)^2)](k)=e^(-2piikx_0-Gammapi|k|). " 
+                  src="Lorentzian Function -- from Wolfram MathWorld.files/NumberedEquation9.gif" 
+                  width=261 border=0></TD>
+                <TD align=right width=3>
+                  <DIV class=eqnum id=eqn9>(9) </DIV></TD></TR></TBODY></TABLE></DIV>
+            <DIV align=center><IMG height=112 alt=LorentzianApodization 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/LorentzianApodization_1000.gif" 
+            width=508> </DIV>
+            <P class=Text>The Lorentzian function can also be used as an <A 
+            class=Hyperlink 
+            href="http://mathworld.wolfram.com/ApodizationFunction.html">apodization 
+            function</A>, although its <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/InstrumentFunction.html">instrument 
+            function</A> is complicated to express analytically. </P><!-- End Content --><!-- Begin See Also -->
+            <FORM name=SearchLinks action=http://mathworld.wolfram.com/search/ 
+            method=get>
+            <P class=CrossRefs><SPAN class=crosslinkheader>SEE ALSO:</SPAN> <A 
+            class=Hyperlink 
+            href="http://mathworld.wolfram.com/CauchyDistribution.html">Cauchy 
+            Distribution</A>, <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/DampedExponentialCosineIntegral.html">Damped 
+            Exponential Cosine Integral</A>, <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/FourierTransformLorentzianFunction.html">Fourier 
+            Transform--Lorentzian Function</A>, <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/GaussianFunction.html">Gaussian 
+            Function</A>, <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/HyperbolicSecant.html">Hyperbolic 
+            Secant</A>, <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/LogisticDistribution.html">Logistic 
+            Distribution</A>, <A class=Hyperlink 
+            href="http://mathworld.wolfram.com/WitchofAgnesi.html">Witch of 
+            Agnesi</A> </P></FORM><!-- End See Also --><!-- Begin CrossURL --><!-- End CrossURL --><!-- Begin Contributor --><!-- End Contributor --><!-- Begin References --><!-- End References --><!-- Begin CiteAs -->
+            <DIV><IMG height=3 alt="" 
+            src="Lorentzian Function -- from Wolfram MathWorld.files/underline.gif" 
+            width=300><BR><BR><BR><SPAN class=crosslinkheader>CITE THIS 
+            AS:</SPAN><BR>
+            <P class=citation><A 
+            href="http://mathworld.wolfram.com/about/author.html">Weisstein, 
+            Eric W.</A> "Lorentzian Function." From <A 
+            href="http://mathworld.wolfram.com/"><I>MathWorld</I></A>--A Wolfram 
+            Web Resource. <A 
+            href="http://mathworld.wolfram.com/LorentzianFunction.html">http://mathworld.wolfram.com/LorentzianFunction.html</A> 
+            </P></DIV><!-- End CiteAs --><!-- End Total Content --></TD></TR><!-- End Body --></TBODY></TABLE></DIV></DIV>
+      <DIV class=bottomshadow><IMG height=17 alt="" 
+      src="Lorentzian Function -- from Wolfram MathWorld.files/spacer.gif" 
+      width=1> </DIV>
+      <P class=footer><A href="http://mathworld.wolfram.com/contact/"><IMG 
+      title=Send height=17 alt=Send 
+      src="Lorentzian Function -- from Wolfram MathWorld.files/send.gif" 
+      width=16 border=0>Contact the <I>MathWorld</I> Team</A><BR>© 1999-2010 <A 
+      href="http://www.wolfram.com/" target=_blank>Wolfram Research, Inc.</A> | 
+      <A href="http://mathworld.wolfram.com/about/terms.html">Terms of Use</A> 
+      </P></TD>
+    <TD vAlign=top>
+      <DIV style="MARGIN-LEFT: 20px; MARGIN-RIGHT: 10px">
+      <DIV class=ad><MAP id=demomap name=demomap><AREA 
+        title="The Wolfram Demonstrations Project" shape=RECT target=_blank 
+        alt="The Wolfram Demonstrations Project" coords=0,0,213,300 
+        href="http://demonstrations.wolfram.com/"></AREA><AREA 
+        title="Browse Topics" shape=RECT target=_blank alt="Browse Topics" 
+        coords=0,300,106,345 
+        href="http://demonstrations.wolfram.com/topics.html"></AREA><AREA 
+        title="View Latest" shape=RECT target=_blank alt="View Latest" 
+        coords=107,300,213,345 
+        href="http://demonstrations.wolfram.com/new.html"></AREA></MAP><IMG 
+      height=345 alt="" 
+      src="Lorentzian Function -- from Wolfram MathWorld.files/demonstrations1.jpg" 
+      width=213 useMap=#demomap border=0> </DIV></DIV>
+      <DIV style="MARGIN-TOP: 30px; MARGIN-LEFT: 16px; MARGIN-RIGHT: 10px"><A 
+      href="http://www.wolfram.com/products/mathematica/" target=_blank><IMG 
+      title="Wolfram Mathematica 7" height=79 alt="Wolfram Mathematica 7" 
+      src="Lorentzian Function -- from Wolfram MathWorld.files/mathematica_bar.gif" 
+      width=224 border=0 ?></A> </DIV><!-- The code below handles :hover and :active for IE6 and below --><!--[if lte IE 6]>
+      <STYLE type=text/css>DIV.redwebmenu {
+	BEHAVIOR: url(/scripts/csshover.htc)
+}
+</STYLE>
+<![endif]-->
+      <DIV 
+      style="MARGIN-TOP: 20px; MARGIN-LEFT: 27px; MARGIN-RIGHT: 30px; POSITION: absolute">
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV class=redwebmenu>
+            <DIV class=redwebmenuheader><A class=aredmenuheader 
+            href="http://www.wolfram.com/webresources.html">&nbsp;Other Wolfram 
+            Web Resources »</A> 
+            <DIV class=redwebsubmenu>
+            <DIV class=redwebitem><A href="http://www.wolfram.com/" 
+            target=_blank>Wolfram Research</A></DIV>
+            <DIV class=redwebitem><A 
+            href="http://www.wolfram.com/products/mathematica/" 
+            target=_blank><I>Mathematica</I> Home Page</A></DIV>
+            <DIV class=redwebitem><A href="http://reference.wolfram.com/" 
+            target=_blank><I>Mathematica</I> Documentation Center</A></DIV>
+            <DIV class=redwebitem><A href="http://demonstrations.wolfram.com/" 
+            target=_blank>Wolfram Demonstrations Project</A></DIV>
+            <DIV class=redwebitem><A href="http://integrals.wolfram.com/" 
+            target=_blank>Online Integrator</A></DIV>
+            <DIV class=redwebitem><A href="http://functions.wolfram.com/" 
+            target=_blank>Functions Site</A></DIV>
+            <DIV class=redwebitem><A href="http://tones.wolfram.com/" 
+            target=_blank>Wolfram Tones</A></DIV>
+            <DIV class=redwebitem><A href="http://www.wolframscience.com/" 
+            target=_blank>Wolfram Science</A></DIV>
+            <DIV class=redwebitem><A href="http://blog.wolfram.com/" 
+            target=_blank>Wolfram Blog</A></DIV>
+            <DIV class=redwebitem><A 
+            href="http://www.wolfram.com/webresources.html" 
+            target=_blank>more…</A></DIV></DIV></DIV></DIV></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></BODY></HTML>

@@ -1,0 +1,7 @@
+
+1. to digitize plot use graphula
+2. rgb sensors is used to operate for measurement of reflectance spectrum of incidence light
+3. publications: example of application of rgb sensor for scanning of optical sygnals
+4. modelling: examples of lorentz and gauss deconvolution in mathcad15
+
+ 
