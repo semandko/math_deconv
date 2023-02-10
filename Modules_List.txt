@@ -1,0 +1,31 @@
+micro system
+https://arduino.ua/prod2652-arduino-mega-2560-r3-ot-keyestudio
+-----------------------------------------------------------------------------------
+keyboard+display
+https://arduino.ua/prod235-lcd-keypad-shield
+
+selder board
+https://arduino.ua/prod3130-plata-dlya-prototipirovaniya-ot-keyestudio-dlya-arduino-mega-2560
+
+shild board
+https://arduino.ua/prod1115-mega-sensor-shield-v2-0-dlya-arduino-mega-2560
+
+multiplexor for I2C ports
+https://arduino.ua/prod2155-i2c-kommytator-8-kanalnii-na-tca9548a
+
+connectors
+https://arduino.ua/prod1084-pixhawk-i2c-razvetvitel
+
+power supply
+https://arduino.ua/prod4275-ponijaushhii-dc-dc-preobrazovatel-na-5v-dc-mini560
+https://arduino.ua/prod5416-povishaushhii-dc-preobrazovatel-5-12v1-5a-c-selektivnim-napryajeniem-vihoda
+
+
+optical sensor
+4 шт:
+https://arduino.ua/prod1315-modyl-datchika-jestov-apds-9960
+--------------------------------------------------------------------------------
+або
+2шт (це круче але дорожче)
+https://arduino.ua/prod2818-datchik-osveshhennosti-gy-49-max44009-i2c-3-3b
+
