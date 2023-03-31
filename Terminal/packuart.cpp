@@ -13,10 +13,39 @@ PackUART::~PackUART()
 void PackUART::packInstruction(const quint8& instruction, quint8 (&buff)[BUFF_LENGTH])
 {
 	// 16 bytes of parcel
-	buff[0] = START_FRAME;
-	buff[1] = instruction;
-	buff[14] = STOP_FRAME;
-	buff[15] = END_FRAME;
+    buff[0] = START_FRAME;
+    buff[1] = instruction;
+    buff[14] = STOP_FRAME;
+    buff[15] = END_FRAME;
+//    buff[2] = 0xFF;
+//    buff[3] = 0xFF;
+//    buff[4] = 0xFF;
+//    buff[5] = 0xFF;
+//    buff[6] = 0xFF;
+//    buff[7] = 0xFF;
+//    buff[8] = 0xFF;
+//    buff[9] = 0xFF;
+//    buff[10] = 0xFF;
+//    buff[11] = 0xFF;
+//    buff[12] = 0xFF;
+//    buff[13] = 0xFF;
+
+//    buff[0] = START_FRAME;
+//    buff[1] = instruction;
+//    buff[2] = 0;
+//    buff[3] = 0;
+//    buff[4] = 0;
+//    buff[5] = 0;
+//    buff[6] = 0;
+//    buff[7] = 0;
+//    buff[8] = 0;
+//    buff[9] = 0;
+//    buff[10] = 0;
+//    buff[11] = 0;
+//    buff[12] = 0;
+//    buff[13] = 0;
+//    buff[14] = STOP_FRAME;
+//    buff[15] = END_FRAME;
 }
 
 void PackUART::packConfig(AnalogTypeDef (&element)[SIZE_OF_SYGNALS])

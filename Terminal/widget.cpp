@@ -154,21 +154,32 @@ If it is not found i keep storing received message in buffer.
 
 void Widget::receiveMessage()
 {
-    const int buffSize = 16;
-    char buffer1[buffSize];
-
-    if(serialPort.bytesAvailable() == buffSize)
+    QByteArray dataBA = serialPort.readAll();
+    QString data(dataBA);
+    buffer.append(data);
+    int index = buffer.indexOf("//");
+    if(index != -1)
     {
-        //  QByteArray buffer11 = serialPort.readAll();
-        serialPort.read(buffer1, buffSize);
-        QString data;
-        for(int i = 0; i < buffSize; ++i)
-        {
-            data.append(buffer1[i]);
-        }
-        ui->textBrowser->setTextColor(Qt::red);
-        ui->textBrowser->append(data);
+       QString message = buffer.mid(0,index);
+       ui->textBrowser->setTextColor(Qt::blue); // Receieved message's color is blue.
+       ui->textBrowser->append(message);
+       buffer.remove(0,index+2);
     }
+//    const int buffSize = 16;
+//    char buffer1[buffSize];
+
+//    if(serialPort.bytesAvailable() == buffSize)
+//    {
+//        //  QByteArray buffer11 = serialPort.readAll();
+//        serialPort.read(buffer1, buffSize);
+//        QString data;
+//        for(int i = 0; i < buffSize; ++i)
+//        {
+//            data.append(buffer1[i]);
+//        }
+//        ui->textBrowser->setTextColor(Qt::red);
+//        ui->textBrowser->append(data);
+//    }
 //    QByteArray dataBA = serialPort.readAll();
 //    QString data(dataBA);
 
@@ -180,7 +191,7 @@ void Widget::on_pushButton_clicked() // UART implemantation and testing next nex
 {
     PackUART commandPacker;
     const int buffSize = 16;
-    quint8 buff[buffSize];
+    quint8 buff[buffSize] = {0};
     QString message = ui->lineEdit_2->text();
 
     if (message == "START")
@@ -202,7 +213,7 @@ void Widget::on_pushButton_clicked() // UART implemantation and testing next nex
 
     ui->textBrowser->setTextColor(Qt::darkGreen); // Color of message to send is green.
     ui->textBrowser->append(message);
-    serialPort.write(reinterpret_cast<char*>(buff));
+    serialPort.write(reinterpret_cast<const char *>(buff), buffSize);
 }
 
 
