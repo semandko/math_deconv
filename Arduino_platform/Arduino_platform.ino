@@ -15,12 +15,13 @@
 #include "Adafruit_APDS9960.h"
 #include "PWFusion_TCA9548A.h"
 
-
 //
 void validSerialData(void);
 void getSerialData(void);
 void initTCA9548A(void);
 void setTCA9548A(void);
+void tcaSelect(uint8_t i);
+void scanerTCA9548A(void);
 void initAPDS9960(void);
 void getAPDS9960(void);
 //
@@ -126,6 +127,40 @@ void setTCA9548A()
   //i2cMux.setChannel(CHAN_NONE); 
   //Serial.println("No channels selected"); 
   //delay(500);
+}
+
+void tcaSelect(uint8_t i)
+{
+  if (i > 7) return;
+ 
+  Wire.beginTransmission(BASE_ADDR);
+  Wire.write(1 << i);
+  Wire.endTransmission();  
+}
+
+void scanerTCA9548A()
+{
+    Serial.println("\nTCAScanner ready!");
+    
+    for (uint8_t t = 0; t < 8; t++)
+	{
+      tcaSelect(t);
+      Serial.print("TCA Port #");
+	  Serial.println(t);
+
+      for (uint8_t addr = 0; addr <= 127; addr++)
+	  {
+        if (addr == BASE_ADDR) continue;
+
+        Wire.beginTransmission(addr);
+        if (!Wire.endTransmission())
+		{
+          Serial.print("Found I2C 0x");
+		  Serial.println(addr,HEX);
+        }
+      }
+    }
+    Serial.println("\ndone");
 }
 
 void initAPDS9960()
