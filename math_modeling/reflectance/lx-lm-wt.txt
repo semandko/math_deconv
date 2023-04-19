@@ -1,0 +1,5 @@
+
+
+lx = [P(wt)/(m^2)]*h
+
+h = lm/wt - effectivness coef
