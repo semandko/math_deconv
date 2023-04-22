@@ -18,11 +18,12 @@
 //
 void validSerialData(void);
 void getSerialData(void);
-void initTCA9548A(void);
-void setTCA9548A(void);
-void tcaSelect(uint8_t i);
-void scanerTCA9548A(void);
-void initAPDS9960(void);
+
+void initTCA9548A(uint8_t channel); // CHAN0
+void setTCA9548A(uint8_t channel); // CHAN0
+void tcaSelect(uint8_t channel); // 0, 1, 2
+
+bool initAPDS9960(void);
 void getAPDS9960(void);
 //
 
@@ -35,6 +36,7 @@ uint16_t c;
 uint16_t luxVal;
 MegaMng megaMng;
 Adafruit_APDS9960 apds;
+bool isConfigApds;
 TCA9548A i2cMux;
 
 
@@ -47,9 +49,13 @@ void setup()
   
   Serial.begin(9600);
   Serial.println("INFO: SERIAL=9600//");
+
+  Wire.begin();
   
-  initTCA9548A();
-  initAPDS9960();
+  initTCA9548A(CHAN1);
+
+  isConfigApds = false;
+  isConfigApds = initAPDS9960();
 
 }
 
@@ -94,7 +100,6 @@ void validSerialData()
             }
         }
     }
-    
 }
 
 void getSerialData()
@@ -105,70 +110,65 @@ void getSerialData()
 }
 
 
-void initTCA9548A()
+void initTCA9548A(uint8_t channel)
 {
   // Initialize I2C multiplexor
-  i2cMux.begin();
-  setTCA9548A();
+  i2cMux.begin(); // configure i2c
+  setTCA9548A(channel);
 }
 
-void setTCA9548A()
+void setTCA9548A(uint8_t channel)
 {
-  i2cMux.setChannel(CHAN0); 
-  Serial.println("Channel 0 selected"); 
-  delay(500);
-  Serial.println("Get selected Channel"); 
-  Serial.println(i2cMux.getChannel()); 
+  for (uint8_t i = 0; i < 3; i++)
+  {
+    // CHAN_NONE | CHAN0 | CHAN4 ...
+    i2cMux.setChannel(channel); 
+    delay(1);
+  
+    Serial.print("Set Channel = ");
+    Serial.println(channel, HEX);
+  
+    Serial.print("Get selected Channel = ");
+    uint8_t getChannel;
+    getChannel = i2cMux.getChannel();
+    Serial.println(getChannel, HEX);
 
-  //i2cMux.setChannel(CHAN0 | CHAN4); 
-  //Serial.println("Channels 0 and 4 selected"); 
-  //delay(500);
+     if (getChannel == channel)
+     {
+        break;
+     }
 
-  //i2cMux.setChannel(CHAN_NONE); 
-  //Serial.println("No channels selected"); 
-  //delay(500);
+    //i2cMux.setChannel(CHAN0 | CHAN4); 
+    //Serial.println("Channels 0 and 4 selected"); 
+  
+    //i2cMux.setChannel(CHAN_NONE); 
+    //Serial.println("No channels selected"); 
+    //delay(500);
+  }
+  
 }
 
-void tcaSelect(uint8_t i)
+void tcaSelect(uint8_t channel)
 {
-  if (i > 7) return;
+  if (channel > 7)
+  {
+    Serial.println("failed number of channel.");
+    return;
+  }
  
   Wire.beginTransmission(BASE_ADDR);
-  Wire.write(1 << i);
-  Wire.endTransmission();  
+  Wire.write(1 << channel);
+  Wire.endTransmission();
+  delay(1);  
 }
 
-void scanerTCA9548A()
-{
-    Serial.println("\nTCAScanner ready!");
-    
-    for (uint8_t t = 0; t < 8; t++)
-	{
-      tcaSelect(t);
-      Serial.print("TCA Port #");
-	  Serial.println(t);
-
-      for (uint8_t addr = 0; addr <= 127; addr++)
-	  {
-        if (addr == BASE_ADDR) continue;
-
-        Wire.beginTransmission(addr);
-        if (!Wire.endTransmission())
-		{
-          Serial.print("Found I2C 0x");
-		  Serial.println(addr,HEX);
-        }
-      }
-    }
-    Serial.println("\ndone");
-}
-
-void initAPDS9960()
+bool initAPDS9960(void)
 {
 	
   if (!apds.begin())
   {
     Serial.println("failed to initialize device! Please check your wiring.");
+    return false;
   }
   else
   {
@@ -183,37 +183,36 @@ void initAPDS9960()
   //apds9960AGain_t gain = apds.getADCGain();
   
   apds.enableColor(true); // enable color sensign mode
+  return true;
 }
 
 void getAPDS9960()
 {
-  // wait for color data to be ready
-  while (!apds.colorDataReady())
+  
+  if (isConfigApds == true)
   {
-    delay(5);
-  }
+    // wait for color data to be ready
+    while (!apds.colorDataReady())
+    {
+      delay(5);
+    }
 
-  // get the data and print the different channels
-  apds.getColorData(&r, &g, &b, &c);
+    // get the data and print the different channels
+    apds.getColorData(&r, &g, &b, &c);
   
-  Serial.print("red: ");
-  Serial.print(r);
+    Serial.print("red: ");
+    Serial.print(r);
   
-  Serial.print(" green: ");
-  Serial.print(g);
+    Serial.print("; green: ");
+    Serial.print(g);
   
-  Serial.print(" blue: ");
-  Serial.print(b);
+    Serial.print("; blue: ");
+    Serial.print(b);
   
-  Serial.print(" clear: ");
-  Serial.println(c);
-  Serial.println();
+    Serial.print("; clear: ");
+    Serial.println(c);
   
-  // get the data and print the illuminance in LUX
-  luxVal = apds.calculateLux(r, g, b);
-  Serial.print(" illuminance in LUX: ");
-  Serial.println(luxVal);
-  Serial.println();
+    delay(1000);
+   }
   
-  delay(1000);
 }

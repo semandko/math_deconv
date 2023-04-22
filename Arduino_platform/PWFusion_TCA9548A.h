@@ -47,6 +47,8 @@
 #include <Wire.h>
 #include <Arduino.h>
 
+#define BASE_ADDR (0x70)
+
 #define CHAN_NONE  0x00
 #define CHAN0      0x01
 #define CHAN1      0x02

@@ -43,8 +43,6 @@
 **************************************************************************/
 #include "PWFusion_TCA9548A.h"
 
-#define BASE_ADDR 0x70
-
 // Initialize the TCA9548A driver, where addr is an address between 0 and 7.
 bool TCA9548A::begin(uint8_t addr, TwoWire &i2cPort) {
   _addr = BASE_ADDR | addr;
