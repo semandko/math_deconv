@@ -8,8 +8,9 @@
 *  \cond
 *   Revision History
 *   Date        Author          Description
-*   ---------   -------------   ---------------------------------------------------------------------------
-*   1.04.2023   Serhii Shahan   Initialization of MegaMng class and methods prototypes
+*   ----------  -------------   ---------------------------------------------------------------------------
+*   01.04.2023  Serhii Shahan   Initialization of MegaMng class and methods prototypes
+*   28.04.2023  Serhii Shahan   Implement main functionalities of Mega Platform
 *
 *  \endcond
 ***********************************************************************************************************/
@@ -18,13 +19,18 @@
 #define _MEGA_MNG_H_
 
 #include "packuart.h"
-
-typedef void (*MM_FUNC_PTR)(void);
+#include "Adafruit_APDS9960.h"
+#include "PWFusion_TCA9548A.h"
 
 typedef enum
 {
     FIRST_EVENT = 0,
     CONFIG_EVENT,
+    CONFIG_SUCCESS_EVENT,
+    CONFIG_FAILURE_EVENT,
+    CAPTURE_DATA_APDS1_EVENT,
+    CAPTURE_DATA_APDS2_EVENT,
+    SEND_CAPTURED_DATA_EVENT,
     EVENT_2,
     //EVENT_3,
     LAST_EVENT
@@ -34,22 +40,19 @@ typedef enum
 {
     FIRST_STATE = 0,
     IDLE,
-    CONFIG_HW_MODULES,
+    CONFIG_APDS_MODULES,
     READY_TO_CAPTURE_DATA,
-    CAPTURE_DATA_FIRST_SENSOR,
-    CAPTURE_DATA_SECOND_SENSOR,
-    CAPTURE_DATA_BOTH_SENSORS,
-    SEND_CAPTURED_DATA,
+    DATA_CAPTURED,
     LAST_STATE
 }MM_STATE;
 
 typedef struct
 {
-    MM_STATE State;
-    MM_EVENT event;
-    MM_STATE nextState;
-    MM_FUNC_PTR funcPtr;
-}MM_TABLE;
+    uint16_t red;
+    uint16_t green;
+    uint16_t blue;
+    uint16_t clear;
+}RGBC_STRUCT;
 
 class MegaMng
 {
@@ -57,11 +60,22 @@ public:
     MegaMng();
     ~MegaMng();
 
-    virtual MM_EVENT    checkInstructionType    (const quint8 (&buff)[BUFF_LENGTH]);
+    // Common methods    
+    virtual MM_EVENT    checkInstructionType    (const quint8 (&buff)[SERIAL_BUFFER_LENGTH]);
     virtual void        executeFSM              (MM_EVENT event);
+    virtual void        mainLoop                (void);
+    virtual bool        checkForSerialData      (void);
+    virtual bool        getSerialData           (void);
+    virtual void        initMega                (void);
+    virtual bool        selectI2cMuxChannel     (uint8_t channel);    
 
     // State Machine methods
-    static  void        hardwareConfiguration   (void);
+    virtual void        apdsConfiguration       (void);
+    virtual void        sendConfigFailure       (void);
+    virtual void        sendConfigSuccess       (void);
+    virtual void        captureDataAPDS1        (void);
+    virtual void        captureDataAPDS2        (void);
+    virtual void        sendCapturedData        (void);
 
     //Getters
     virtual MM_STATE    getCurrentState         (void)  const;
@@ -69,9 +83,13 @@ public:
     //Setters
     virtual void        setCurrentState         (MM_STATE state);
 private:
-    MM_STATE current_state_;
+    MM_STATE            current_state_;
+    quint8              serial_data_buffer_[SERIAL_BUFFER_LENGTH];
+    PackUART            packer_uart_;
+    Adafruit_APDS9960   apds1_;
+    Adafruit_APDS9960   apds2_;
+    TCA9548A            i2c_mux_;
+    RGBC_STRUCT         rgbc_data_;
 };
-
-
 
 #endif

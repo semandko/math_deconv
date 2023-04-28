@@ -10,7 +10,7 @@ PackUART::~PackUART()
 	
 }
 
-void PackUART::packInstruction(const quint8& instruction, quint8 (&buff)[BUFF_LENGTH])
+void PackUART::packInstruction(const quint8& instruction, quint8 (&buff)[SERIAL_BUFFER_LENGTH])
 {
 	// 16 bytes of parcel
     buff[0] = START_FRAME;
@@ -48,7 +48,7 @@ void PackUART::packInstruction(const quint8& instruction, quint8 (&buff)[BUFF_LE
 //    buff[15] = END_FRAME;
 }
 
-void PackUART::packConfig(AnalogTypeDef (&element)[SIZE_OF_SYGNALS])
+void PackUART::packConfig(AnalogTypeDef (&element)[SIZE_OF_SIGNALS])
 {
 	
 	const DefineConfigPack* config;
@@ -68,7 +68,7 @@ void PackUART::packConfig(AnalogTypeDef (&element)[SIZE_OF_SYGNALS])
     }
 }
 
-void PackUART::pack(AnalogTypeDef& as, quint8 (&buff)[BUFF_LENGTH])
+void PackUART::pack(AnalogTypeDef& as, quint8 (&buff)[SERIAL_BUFFER_LENGTH])
 {
 	
 	float value = as.value;
@@ -86,7 +86,7 @@ void PackUART::pack(AnalogTypeDef& as, quint8 (&buff)[BUFF_LENGTH])
     exBuff[as.offset] |= as.output; 					// put it in the result
 }
 
-void PackUART::unpack(AnalogTypeDef& as, quint8 (&buff)[BUFF_LENGTH])
+void PackUART::unpack(AnalogTypeDef& as, quint8 (&buff)[SERIAL_BUFFER_LENGTH])
 {
 	
 	quint16* exBuff = (quint16*)buff;
@@ -97,7 +97,7 @@ void PackUART::unpack(AnalogTypeDef& as, quint8 (&buff)[BUFF_LENGTH])
     as.code = static_cast<quint32>(((as.valuemeasured*as.maxCode)/(2*as.msb)));
 }
 
-bool PackUART::isPacketStructureCorrect(const quint8 (&buff)[BUFF_LENGTH])
+bool PackUART::isPacketStructureCorrect(const quint8 (&buff)[SERIAL_BUFFER_LENGTH])
 {
     if (buff[START_FRAME_POS] != START_FRAME &&
         buff[STOP_FRAME_POS] != STOP_FRAME &&

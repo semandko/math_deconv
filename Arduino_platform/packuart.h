@@ -11,24 +11,29 @@ Semenenko Myk: semenenko_myk@ukr.net
 #define qint32 int
 #define quint32 unsigned int
 
-#define NUMBER_POINTS           128 // number of points for data
-#define BUFF_LENGTH             16 // length of the UART packet
+#define NUMBER_POINTS               128 // number of points for data
+#define SERIAL_BUFFER_LENGTH        16 // length of the UART packet
 
-#define START_FRAME             0x3A
-#define STOP_FRAME              0x0D
-#define END_FRAME               0x0A
+#define START_FRAME                 0x3A
+#define STOP_FRAME                  0x0D
+#define END_FRAME                   0x0A
 
-#define START_FRAME_POS         0x00
-#define INSTRUCTION_FRAME_POS   0x01
-#define STOP_FRAME_POS          0x0E
-#define END_FRAME_POS           0x0F
+#define START_FRAME_POS             0x00
+#define INSTRUCTION_FRAME_POS       0x01
+#define STOP_FRAME_POS              0x0E
+#define END_FRAME_POS               0x0F
 
 
-#define START_LUXMETER          14
+#define START_LUXMETER              14
 
-#define CONFIG_INSTRUCTION      0xFD
-#define TEST_INSTRUCTION2       0xFE
-#define TEST_INSTRUCTION3       0xFF
+#define CONFIG_INSTRUCTION          0xF1
+#define CONFIG_SUCCESS_INSTRUCTION  0xF2
+#define CONFIG_FAILURE_INSTRUCTION  0xF3
+#define APDS_DATA_INSTRUCTION       0xF4
+
+
+#define TEST_INSTRUCTION2           0xFE
+#define TEST_INSTRUCTION3           0xFF
 
 
 const quint8 Instruction = START_LUXMETER;
@@ -36,14 +41,13 @@ const quint8 Instruction = START_LUXMETER;
 
 typedef enum
 {
-    Default_GY1145      = 0,
-    LUXMETER_UV         = 1,
-    LUXMETER_VIS        = 2,
-    LUXMETER_IR         = 3,
-
-    //COMMAND_TYPE        = 4,
+    FIRST_SIGNAL        = 0,
+    APDS_RED            = 1,
+    APDS_GREEN          = 2,
+    APDS_BLUE           = 3,
+    APDS_CLEAR          = 4,
     
-    SIZE_OF_SYGNALS
+    SIZE_OF_SIGNALS
 } BaseGY1145_TypeDef;
 
 typedef struct
@@ -81,17 +85,11 @@ const DefineConfigPack ConfigPakage[] =
 {
     //quint8        //const quint32*    //quint32   //quint8   //quint32    //quint32  //float             //float
     //sygnal              msb            bitlength   offset      maxCode     Alignment   divider for ADC     coeff
-    {LUXMETER_UV,   	 32768,         16,         1,         4095,       4095,        1,      			1},
-    {LUXMETER_VIS,       32768,         16,         2,         4095,       4095,        1,      			1},
-    {LUXMETER_IR,        32768,         16,         3,         4095,       4095,        1,      			1}
+    {APDS_RED,   	    32768,              16,         1,         4095,       4095,        1,      			1},
+    {APDS_GREEN,        32768,              16,         2,         4095,       4095,        1,      			1},
+    {APDS_BLUE,         32768,              16,         3,         4095,       4095,        1,      			1},
+    {APDS_CLEAR,        32768,              16,         4,         4095,       4095,        1,      			1},
 };
-
-//const DefineConfigPack TestPackage[] =
-//{
-//    //quint8        //const quint32*    //quint32   //quint8   //quint32    //quint32  //float             //float
-//    //sygnal              msb            bitlength   offset      maxCode     Alignment   divider for ADC     coeff
-//    {COMMAND_TYPE,       32768,         16,         1,         4095,       4095,        1,                  1},
-//};
 
 //packing for 2 bytes by msb
 //                             0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17 */
@@ -105,11 +103,11 @@ public:
     explicit PackUART();
     virtual ~PackUART();
 
-	virtual void packInstruction(const quint8& instruction, quint8 (&buff)[BUFF_LENGTH]);
-    virtual void packConfig(AnalogTypeDef (&element)[SIZE_OF_SYGNALS]);
-    virtual void pack(AnalogTypeDef& as, quint8 (&buff)[BUFF_LENGTH]);
-    virtual void unpack(AnalogTypeDef& as, quint8 (&buff)[BUFF_LENGTH]);
-    virtual bool isPacketStructureCorrect(const quint8 (&buff)[BUFF_LENGTH]);
+	virtual void packInstruction(const quint8& instruction, quint8 (&buff)[SERIAL_BUFFER_LENGTH]);
+    virtual void packConfig(AnalogTypeDef (&element)[SIZE_OF_SIGNALS]);
+    virtual void pack(AnalogTypeDef& as, quint8 (&buff)[SERIAL_BUFFER_LENGTH]);
+    virtual void unpack(AnalogTypeDef& as, quint8 (&buff)[SERIAL_BUFFER_LENGTH]);
+    virtual bool isPacketStructureCorrect(const quint8 (&buff)[SERIAL_BUFFER_LENGTH]);
 
 private:
 	float value_;
