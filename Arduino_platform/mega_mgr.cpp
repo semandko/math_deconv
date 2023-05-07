@@ -198,7 +198,7 @@ bool MegaMng::getSerialData(void)
 void MegaMng::initMega(void)
 {
     Serial.begin(9600);
-    Serial.println("INFO: SERIAL=9600//");
+    //Serial.println("INFO: SERIAL=9600//");
     Wire.begin();
     i2c_mux_.begin();
 }

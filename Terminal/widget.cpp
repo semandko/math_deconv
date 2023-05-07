@@ -12,7 +12,7 @@ Widget::Widget(QWidget *parent)
     setFixedSize(width(), height());
 
     // Adding title for widget
-    QWidget::setWindowTitle("Serial Port Example");
+    QWidget::setWindowTitle("Qt terminal");
 
     // Ports
     QList<QSerialPortInfo> ports = info.availablePorts();
@@ -213,7 +213,8 @@ void Widget::on_pushButton_clicked() // UART implemantation and testing next nex
 
     ui->textBrowser->setTextColor(Qt::darkGreen); // Color of message to send is green.
     ui->textBrowser->append(message);
-    serialPort.write(reinterpret_cast<const char *>(buff), buffSize);
+    //serialPort.write(reinterpret_cast<const char *>(buff), buffSize);
+    serialPort.write(message.toStdString().c_str(), message.length());
 }
 
 
