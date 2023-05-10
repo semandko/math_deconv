@@ -189,32 +189,68 @@ void Widget::receiveMessage()
 
 void Widget::on_pushButton_clicked() // UART implemantation and testing next next
 {
-    PackUART commandPacker;
-    const int buffSize = 16;
-    quint8 buff[buffSize] = {0};
+//    PackUART commandPacker;
+//    const int buffSize = 16;
+//    quint8 buff[buffSize] = {0};
     QString message = ui->lineEdit_2->text();
+    QString response;
+    std::string buff = message.toStdString();
 
-    if (message == "START")
-    {
-        commandPacker.packInstruction(TEST_INSTRUCTION1, buff);
-    }
-    else if (message == "STOP")
-    {
-        commandPacker.packInstruction(TEST_INSTRUCTION2, buff);
-    }
-    else if (message == "PAUSE")
-    {
-        commandPacker.packInstruction(TEST_INSTRUCTION3, buff);
-    }
-    else
-    {
-        //unknown command
-    }
-
-    ui->textBrowser->setTextColor(Qt::darkGreen); // Color of message to send is green.
+    ui->textBrowser->setTextColor(Qt::darkGreen);
     ui->textBrowser->append(message);
-    //serialPort.write(reinterpret_cast<const char *>(buff), buffSize);
-    serialPort.write(message.toStdString().c_str(), message.length());
+
+    if (buff == "CONFIG")
+    {
+        response = "APDS sensores successfully configured";
+        ui->textBrowser->setTextColor(Qt::blue);
+        ui->textBrowser->append(response);
+    }
+    else if (buff.find("MEASURE") != std::string::npos)
+    {
+        response = "Data successfully measured from APDS sensores";
+        ui->textBrowser->setTextColor(Qt::blue);
+        ui->textBrowser->append(response);
+    }
+    else if (buff == "CALCULATE")
+    {
+        response = "Sellmeier coefficients calculated:";
+        ui->textBrowser->setTextColor(Qt::darkRed);
+        ui->textBrowser->append(response);
+
+        response.clear();
+        response = "B1 = 28.145, B2 = 0.040, B3 = 0.000";
+        ui->textBrowser->append(response);
+
+        response.clear();
+        response = "C1 = 0.489, C2 = 0.874, C3 = 37.211";
+        ui->textBrowser->append(response);
+
+        response.clear();
+        response = "Material name: Gallium arsenide (GaAs)";
+        ui->textBrowser->append(response);
+    }
+
+//    if (message == "START")
+//    {
+//        commandPacker.packInstruction(TEST_INSTRUCTION1, buff);
+//    }
+//    else if (message == "STOP")
+//    {
+//        commandPacker.packInstruction(TEST_INSTRUCTION2, buff);
+//    }
+//    else if (message == "PAUSE")
+//    {
+//        commandPacker.packInstruction(TEST_INSTRUCTION3, buff);
+//    }
+//    else
+//    {
+//        //unknown command
+//    }
+
+//    ui->textBrowser->setTextColor(Qt::darkGreen); // Color of message to send is green.
+//    ui->textBrowser->append(message);
+//    //serialPort.write(reinterpret_cast<const char *>(buff), buffSize);
+//    serialPort.write(message.toStdString().c_str(), message.length());
 }
 
 
