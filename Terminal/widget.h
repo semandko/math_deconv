@@ -4,10 +4,19 @@
 #include <QWidget>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include "packuart.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
+
+enum class CommandId
+{
+    PING = 0,
+    CONFIG,
+    MEASURE,
+    CALCULATE
+};
 
 class Widget : public QWidget
 {
@@ -18,19 +27,23 @@ public:
     ~Widget();
 
 private slots:
-    void on_pushButton_2_clicked();
     void receiveMessage();
-    void on_pushButton_clicked();
+    void on_pushButton_1_clicked();
+    void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
     void on_pushButton_4_clicked();
     void on_pushButton_5_clicked();
 
 private:
-    Ui::Widget *ui;
-    QSerialPort serialPort;
-    QSerialPortInfo info;
-    QString buffer;
-    QString code;
-    int codeSize;
+    Ui::Widget* ui_;
+    QSerialPort serialPort_;
+    QSerialPortInfo info_;
+    QString buffer_;
+
+    std::map<std::string, CommandId> command_table_;
+    PackUART packer_;
+
+    // private methods
+    void commandHandler(QString& cmd);
 };
 #endif // WIDGET_H

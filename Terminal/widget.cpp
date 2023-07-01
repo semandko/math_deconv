@@ -1,12 +1,11 @@
 #include "widget.h"
 #include "ui_widget.h"
-#include "packuart.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Widget)
+    , ui_(new Ui::Widget)
 {
-    ui->setupUi(this);
+    ui_->setupUi(this);
 
     // Disable maximizing
     setFixedSize(width(), height());
@@ -15,128 +14,179 @@ Widget::Widget(QWidget *parent)
     QWidget::setWindowTitle("Qt terminal");
 
     // Ports
-    QList<QSerialPortInfo> ports = info.availablePorts();
+    QList<QSerialPortInfo> ports = info_.availablePorts();
     QList<QString> stringPorts;
     for(int i = 0 ; i < ports.size() ; i++){
         stringPorts.append(ports.at(i).portName());
     }
-    ui->comboBox->addItems(stringPorts);
+    ui_->comboBox->addItems(stringPorts);
 
     // Baud Rate Ratios
-    QList<qint32> baudRates = info.standardBaudRates(); // What baudrates does my computer support ?
+    QList<qint32> baudRates = info_.standardBaudRates(); // What baudrates does my computer support ?
     QList<QString> stringBaudRates;
     for(int i = 0 ; i < baudRates.size() ; i++){
         stringBaudRates.append(QString::number(baudRates.at(i)));
     }
-    ui->comboBox_2->addItems(stringBaudRates);
+    ui_->comboBox_2->addItems(stringBaudRates);
 
     // Data Bits
-    ui->comboBox_3->addItem("5");
-    ui->comboBox_3->addItem("6");
-    ui->comboBox_3->addItem("7");
-    ui->comboBox_3->addItem("8");
+    ui_->comboBox_3->addItem("5");
+    ui_->comboBox_3->addItem("6");
+    ui_->comboBox_3->addItem("7");
+    ui_->comboBox_3->addItem("8");
 
     // Stop Bits
-    ui->comboBox_4->addItem("1 Bit");
-    ui->comboBox_4->addItem("1,5 Bits");
-    ui->comboBox_4->addItem("2 Bits");
+    ui_->comboBox_4->addItem("1 Bit");
+    ui_->comboBox_4->addItem("1,5 Bits");
+    ui_->comboBox_4->addItem("2 Bits");
 
     // Parities
-    ui->comboBox_5->addItem("No Parity");
-    ui->comboBox_5->addItem("Even Parity");
-    ui->comboBox_5->addItem("Odd Parity");
-    ui->comboBox_5->addItem("Mark Parity");
-    ui->comboBox_5->addItem("Space Parity");
+    ui_->comboBox_5->addItem("No Parity");
+    ui_->comboBox_5->addItem("Even Parity");
+    ui_->comboBox_5->addItem("Odd Parity");
+    ui_->comboBox_5->addItem("Mark Parity");
+    ui_->comboBox_5->addItem("Space Parity");
 
     //Flow Controls
-    ui->comboBox_6->addItem("No Flow Control");
-    ui->comboBox_6->addItem("Hardware Flow Control");
-    ui->comboBox_6->addItem("Software Flow Control");
+    ui_->comboBox_6->addItem("No Flow Control");
+    ui_->comboBox_6->addItem("Hardware Flow Control");
+    ui_->comboBox_6->addItem("Software Flow Control");
 
+    command_table_ =
+    {
+        {"PING", CommandId::PING},
+        {"CONFIG", CommandId::CONFIG},
+        {"MEASURE", CommandId::MEASURE},
+        {"CALCULATE", CommandId::CALCULATE}
+    };
 }
 
 Widget::~Widget()
 {
-    delete ui;
+    delete ui_;
 }
 
+void Widget::commandHandler(QString& cmd)
+{
+    switch (command_table_[cmd.toStdString()])
+    {
+    case CommandId::PING:
+    {
+        quint8 buff[SERIAL_BUFFER_LENGTH];
+        packer_.packInstruction(InstructionId::PING_INSTRUCTION, buff);
+        serialPort_.write(reinterpret_cast<const char *>(buff), SERIAL_BUFFER_LENGTH);
+        break;
+    }
+    case CommandId::CONFIG:
+    {
+        quint8 buff[SERIAL_BUFFER_LENGTH];
+        packer_.packInstruction(InstructionId::CONFIG_INSTRUCTION, buff);
+        serialPort_.write(reinterpret_cast<const char *>(buff), SERIAL_BUFFER_LENGTH);
+        break;
+    }
+    case CommandId::MEASURE:
+    {
+        quint8 buff[SERIAL_BUFFER_LENGTH];
+        packer_.packInstruction(InstructionId::MEASURE_INSTRUCTION, buff);
+        serialPort_.write(reinterpret_cast<const char *>(buff), SERIAL_BUFFER_LENGTH);
+        break;
+    }
+    case CommandId::CALCULATE:
+        // to be implemented later
+        break;
+    default:
+
+        break;
+    }
+}
+
+void Widget::on_pushButton_1_clicked() // UART implemantation and testing next next
+{
+    QString message = ui_->lineEdit_2->text();
+    std::string buff = message.toStdString();
+
+    ui_->textBrowser->setTextColor(Qt::darkGreen);
+    ui_->textBrowser->append(message);
+
+    commandHandler(message);
+
+//    ui->textBrowser->setTextColor(Qt::darkGreen); // Color of message to send is green.
+//    ui->textBrowser->append(message);
+//    //serialPort.write(reinterpret_cast<const char *>(buff), buffSize);
+//    serialPort.write(message.toStdString().c_str(), message.length());
+}
 
 void Widget::on_pushButton_2_clicked()
 {
 
-    QString portName = ui->comboBox->currentText();
-    serialPort.setPortName(portName);
+    QString portName = ui_->comboBox->currentText();
+    serialPort_.setPortName(portName);
 
-    serialPort.open(QIODevice::ReadWrite);
+    serialPort_.open(QIODevice::ReadWrite);
 
-    if(!serialPort.isOpen()){
-        ui->textBrowser->setTextColor(Qt::red);
-        ui->textBrowser->append("!!!! Something went Wrong !!!!");
+    if(!serialPort_.isOpen()){
+        ui_->textBrowser->setTextColor(Qt::red);
+        ui_->textBrowser->append("!!!! Something went Wrong !!!!");
     }
     else {
 
-        QString stringbaudRate = ui->comboBox_2->currentText();
+        QString stringbaudRate = ui_->comboBox_2->currentText();
         int intbaudRate = stringbaudRate.toInt();
-        serialPort.setBaudRate(intbaudRate);
+        serialPort_.setBaudRate(intbaudRate);
 
-        QString dataBits = ui->comboBox_3->currentText();
+        QString dataBits = ui_->comboBox_3->currentText();
         if(dataBits == "5 Bits") {
-           serialPort.setDataBits(QSerialPort::Data5);
+           serialPort_.setDataBits(QSerialPort::Data5);
         }
         else if((dataBits == "6 Bits")) {
-           serialPort.setDataBits(QSerialPort::Data6);
+           serialPort_.setDataBits(QSerialPort::Data6);
         }
         else if(dataBits == "7 Bits") {
-           serialPort.setDataBits(QSerialPort::Data7);
+           serialPort_.setDataBits(QSerialPort::Data7);
         }
         else if(dataBits == "8 Bits"){
-           serialPort.setDataBits(QSerialPort::Data8);
+           serialPort_.setDataBits(QSerialPort::Data8);
         }
 
-        QString stopBits = ui->comboBox_4->currentText();
+        QString stopBits = ui_->comboBox_4->currentText();
         if(stopBits == "1 Bit") {
-         serialPort.setStopBits(QSerialPort::OneStop);
+         serialPort_.setStopBits(QSerialPort::OneStop);
         }
         else if(stopBits == "1,5 Bits") {
-         serialPort.setStopBits(QSerialPort::OneAndHalfStop);
+         serialPort_.setStopBits(QSerialPort::OneAndHalfStop);
         }
         else if(stopBits == "2 Bits") {
-         serialPort.setStopBits(QSerialPort::TwoStop);
+         serialPort_.setStopBits(QSerialPort::TwoStop);
         }
 
-        QString parity = ui->comboBox_5->currentText();
+        QString parity = ui_->comboBox_5->currentText();
         if(parity == "No Parity"){
-          serialPort.setParity(QSerialPort::NoParity);
+          serialPort_.setParity(QSerialPort::NoParity);
         }
         else if(parity == "Even Parity"){
-          serialPort.setParity(QSerialPort::EvenParity);
+          serialPort_.setParity(QSerialPort::EvenParity);
         }
         else if(parity == "Odd Parity"){
-          serialPort.setParity(QSerialPort::OddParity);
+          serialPort_.setParity(QSerialPort::OddParity);
         }
         else if(parity == "Mark Parity"){
-          serialPort.setParity(QSerialPort::MarkParity);
+          serialPort_.setParity(QSerialPort::MarkParity);
         }
         else if(parity == "Space Parity") {
-            serialPort.setParity(QSerialPort::SpaceParity);
+            serialPort_.setParity(QSerialPort::SpaceParity);
         }
 
 
-        QString flowControl = ui->comboBox_6->currentText();
+        QString flowControl = ui_->comboBox_6->currentText();
         if(flowControl == "No Flow Control") {
-          serialPort.setFlowControl(QSerialPort::NoFlowControl);
+          serialPort_.setFlowControl(QSerialPort::NoFlowControl);
         }
         else if(flowControl == "Hardware Flow Control") {
-          serialPort.setFlowControl(QSerialPort::HardwareControl);
+          serialPort_.setFlowControl(QSerialPort::HardwareControl);
         }
         else if(flowControl == "Software Flow Control") {
-          serialPort.setFlowControl(QSerialPort::SoftwareControl);
+          serialPort_.setFlowControl(QSerialPort::SoftwareControl);
         }
-
-        code = ui->lineEdit->text();
-        codeSize = code.size();
-
-        connect(&serialPort,SIGNAL(readyRead()),this,SLOT(receiveMessage()));
     }
 
 
@@ -154,16 +204,16 @@ If it is not found i keep storing received message in buffer.
 
 void Widget::receiveMessage()
 {
-    QByteArray dataBA = serialPort.readAll();
+    QByteArray dataBA = serialPort_.readAll();
     QString data(dataBA);
-    buffer.append(data);
-    int index = buffer.indexOf("//");
+    buffer_.append(data);
+    int index = buffer_.indexOf("//");
     if(index != -1)
     {
-       QString message = buffer.mid(0,index);
-       ui->textBrowser->setTextColor(Qt::blue); // Receieved message's color is blue.
-       ui->textBrowser->append(message);
-       buffer.remove(0,index+2);
+       QString message = buffer_.mid(0,index);
+       ui_->textBrowser->setTextColor(Qt::blue); // Receieved message's color is blue.
+       ui_->textBrowser->append(message);
+       buffer_.remove(0,index+2);
     }
 //    const int buffSize = 16;
 //    char buffer1[buffSize];
@@ -187,94 +237,28 @@ void Widget::receiveMessage()
 //    ui->textBrowser->append(data);
 }
 
-void Widget::on_pushButton_clicked() // UART implemantation and testing next next
-{
-//    PackUART commandPacker;
-//    const int buffSize = 16;
-//    quint8 buff[buffSize] = {0};
-    QString message = ui->lineEdit_2->text();
-    QString response;
-    std::string buff = message.toStdString();
-
-    ui->textBrowser->setTextColor(Qt::darkGreen);
-    ui->textBrowser->append(message);
-
-    if (buff == "CONFIG")
-    {
-        response = "APDS sensores successfully configured";
-        ui->textBrowser->setTextColor(Qt::blue);
-        ui->textBrowser->append(response);
-    }
-    else if (buff.find("MEASURE") != std::string::npos)
-    {
-        response = "Data successfully measured from APDS sensores";
-        ui->textBrowser->setTextColor(Qt::blue);
-        ui->textBrowser->append(response);
-    }
-    else if (buff == "CALCULATE")
-    {
-        response = "Sellmeier coefficients calculated:";
-        ui->textBrowser->setTextColor(Qt::darkRed);
-        ui->textBrowser->append(response);
-
-        response.clear();
-        response = "B1 = 28.145, B2 = 0.040, B3 = 0.000";
-        ui->textBrowser->append(response);
-
-        response.clear();
-        response = "C1 = 0.489, C2 = 0.874, C3 = 37.211";
-        ui->textBrowser->append(response);
-
-        response.clear();
-        response = "Material name: Gallium arsenide (GaAs)";
-        ui->textBrowser->append(response);
-    }
-
-//    if (message == "START")
-//    {
-//        commandPacker.packInstruction(TEST_INSTRUCTION1, buff);
-//    }
-//    else if (message == "STOP")
-//    {
-//        commandPacker.packInstruction(TEST_INSTRUCTION2, buff);
-//    }
-//    else if (message == "PAUSE")
-//    {
-//        commandPacker.packInstruction(TEST_INSTRUCTION3, buff);
-//    }
-//    else
-//    {
-//        //unknown command
-//    }
-
-//    ui->textBrowser->setTextColor(Qt::darkGreen); // Color of message to send is green.
-//    ui->textBrowser->append(message);
-//    //serialPort.write(reinterpret_cast<const char *>(buff), buffSize);
-//    serialPort.write(message.toStdString().c_str(), message.length());
-}
-
 
 // Button of Disconnect
 void Widget::on_pushButton_3_clicked()
 {
-    serialPort.close();
+    serialPort_.close();
 }
 
 // Button of Refresh Ports
 void Widget::on_pushButton_4_clicked()
 {
-    ui->comboBox->clear();
-    QList<QSerialPortInfo> ports = info.availablePorts();
+    ui_->comboBox->clear();
+    QList<QSerialPortInfo> ports = info_.availablePorts();
     QList<QString> stringPorts;
     for(int i = 0 ; i < ports.size() ; i++){
         stringPorts.append(ports.at(i).portName());
     }
-    ui->comboBox->addItems(stringPorts);
+    ui_->comboBox->addItems(stringPorts);
 }
 
 // Button of Clear
 void Widget::on_pushButton_5_clicked()
 {
-    ui->textBrowser->clear();
+    ui_->textBrowser->clear();
 }
 
