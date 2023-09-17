@@ -1,0 +1,8 @@
+﻿
+											impact 		 Q	percentile
+
+1	2022	Elsevier TSF		https://doi.org/10.1016/j.tsf.2022.139536	2.358		2	25
+M. Semenenko, M. Dusheiko, G. Okrepka, R. Redko, S. Antonin, V. Hladkovskyi, V. Shvalagin, F. Gao, S. Shahan, A. Sarikov.
+Vertically-aligned p-n junction Si solar cells with CdTe/CdS luminescent solar convertors. Thin Solid Films 761 (2022) 139536.
+
+2
